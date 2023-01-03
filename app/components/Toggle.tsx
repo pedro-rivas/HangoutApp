@@ -260,20 +260,20 @@ function Checkbox(props: ToggleInputProps) {
   const offBackgroundColor = [
     disabled && colors.palette.neutral400,
     status === "error" && colors.errorBackground,
-    colors.palette.neutral200,
+    colors.palette.navyBlue,
   ].filter(Boolean)[0]
 
   const outerBorderColor = [
     disabled && colors.palette.neutral400,
     status === "error" && colors.error,
-    !on && colors.palette.neutral800,
+    !on && colors.palette.navyBlue,
     colors.palette.secondary500,
   ].filter(Boolean)[0]
 
   const onBackgroundColor = [
     disabled && colors.transparent,
     status === "error" && colors.errorBackground,
-    colors.palette.secondary500,
+    colors.palette.navyBlue,
   ].filter(Boolean)[0]
 
   const iconTintColor = [
@@ -327,19 +327,19 @@ function Radio(props: ToggleInputProps) {
     disabled && colors.palette.neutral400,
     status === "error" && colors.error,
     !on && colors.palette.neutral800,
-    colors.palette.secondary500,
+    colors.palette.navyBlue,
   ].filter(Boolean)[0]
 
   const onBackgroundColor = [
     disabled && colors.transparent,
     status === "error" && colors.errorBackground,
-    colors.palette.neutral100,
+    colors.palette.navyBlue,
   ].filter(Boolean)[0]
 
   const dotBackgroundColor = [
     disabled && colors.palette.neutral600,
     status === "error" && colors.error,
-    colors.palette.secondary500,
+    colors.palette.navyBlue,
   ].filter(Boolean)[0]
 
   return (

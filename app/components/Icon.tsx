@@ -13,43 +13,14 @@ import {
 export type IconTypes = keyof typeof iconRegistry
 
 interface IconProps extends TouchableOpacityProps {
-  /**
-   * The name of the icon
-   */
   icon: IconTypes
-
-  /**
-   * An optional tint color for the icon
-   */
   color?: string
-
-  /**
-   * An optional size for the icon. If not provided, the icon will be sized to the icon's resolution.
-   */
   size?: number
-
-  /**
-   * Style overrides for the icon image
-   */
   style?: StyleProp<ImageStyle>
-
-  /**
-   * Style overrides for the icon container
-   */
   containerStyle?: StyleProp<ViewStyle>
-
-  /**
-   * An optional function to be called when the icon is pressed
-   */
   onPress?: TouchableOpacityProps["onPress"]
 }
 
-/**
- * A component to render a registered icon.
- * It is wrapped in a <TouchableOpacity /> if `onPress` is provided, otherwise a <View />.
- *
- * - [Documentation and Examples](https://github.com/infinitered/ignite/blob/master/docs/Components-Icon.md)
- */
 export function Icon(props: IconProps) {
   const {
     icon,
@@ -107,6 +78,23 @@ export const iconRegistry = {
   slack: require("../../assets/icons/slack.png"),
   view: require("../../assets/icons/view.png"),
   x: require("../../assets/icons/x.png"),
+  home: require("../../assets/icons/home.png"),
+  search: require("../../assets/icons/search.png"),
+  message: require("../../assets/icons/messenger.png"),
+  user: require("../../assets/icons/user.png"),
+  work: require("../../assets/icons/suitcase.png"),
+  location: require("../../assets/icons/location.png"),
+  backpack: require("../../assets/icons/color/backpack.png"),
+  basketball: require("../../assets/icons/color/basketball.png"),
+  boardGame: require("../../assets/icons/color/board-game.png"),
+  festivals: require("../../assets/icons/color/concert.png"),
+  nightClubs: require("../../assets/icons/color/disco-ball.png"),
+  marijuana: require("../../assets/icons/color/marijuana.png"),
+  art: require("../../assets/icons/color/palette.png"),
+  running: require("../../assets/icons/color/runner.png"),
+  standUpComedy: require("../../assets/icons/color/standing.png"),
+  beaches: require("../../assets/icons/color/vacations.png"),
+  yoga: require("../../assets/icons/color/yoga.png"),
 }
 
 const $imageStyle: ImageStyle = {
