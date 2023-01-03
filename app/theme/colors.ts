@@ -33,6 +33,12 @@ const palette = {
   angry100: "#F2D6CD",
   angry500: "#C03403",
 
+  cornflower: "#151B25",
+  cornflowerDark: "#CDDFD6",
+  navyBlue: "#034687",
+  babyBlue: "#DBE8E1",
+  red: "#E10032",
+
   overlay20: "rgba(25, 16, 21, 0.2)",
   overlay50: "rgba(25, 16, 21, 0.5)",
 }
@@ -51,7 +57,7 @@ export const colors = {
   /**
    * The default text color in many components.
    */
-  text: palette.neutral800,
+  text: palette.cornflower,
   /**
    * Secondary text information.
    */
@@ -59,7 +65,7 @@ export const colors = {
   /**
    * The default color of the screen background.
    */
-  background: palette.neutral200,
+  background: palette.babyBlue,
   /**
    * The default border color.
    */
@@ -67,18 +73,18 @@ export const colors = {
   /**
    * The main tinting color.
    */
-  tint: palette.primary500,
+  tint: palette.red,
   /**
    * A subtle color used for lines.
    */
-  separator: palette.neutral300,
+  separator: palette.red,
   /**
    * Error messages.
    */
-  error: palette.angry500,
+  error: palette.red,
   /**
    * Error Background.
    *
    */
-  errorBackground: palette.angry100,
+  errorBackground: palette.red,
 }
