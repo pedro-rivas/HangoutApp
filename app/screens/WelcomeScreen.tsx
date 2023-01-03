@@ -1,81 +1,82 @@
-import { observer } from "mobx-react-lite"
-import React, { FC } from "react"
-import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
-import {
-  Text,
-} from "../components"
-import { isRTL } from "../i18n"
-import { colors, spacing } from "../theme"
-import { useSafeAreaInsetsStyle } from "../utils/useSafeAreaInsetsStyle"
-
-const welcomeLogo = require("../../assets/images/logo.png")
-const welcomeFace = require("../../assets/images/welcome-face.png")
+import React, { FC, useState } from 'react'
+import { View, Text, TouchableOpacity } from 'react-native'
+import CountryPicker from 'react-native-country-picker-modal'
+import { CountryCode, Country } from '../types'
+import { observer } from 'mobx-react-lite'
 
 
-export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeScreen(
-) {
-
-  const $bottomContainerInsets = useSafeAreaInsetsStyle(["bottom"])
-
-  return (
-    <View style={$container}>
-      <View style={$topContainer}>
-        <Image style={$welcomeLogo} source={welcomeLogo} resizeMode="contain" />
-        <Text
-          testID="welcome-heading"
-          style={$welcomeHeading}
-          tx="welcomeScreen.readyForLaunch"
-          preset="heading"
-        />
-        <Text tx="welcomeScreen.exciting" preset="subheading" />
-        <Image style={$welcomeFace} source={welcomeFace} resizeMode="contain" />
-      </View>
-
-      <View style={[$bottomContainer, $bottomContainerInsets]}>
-        <Text tx="welcomeScreen.postscript" size="md" />
-      </View>
-    </View>
+export const WelcomeScreen: FC = observer(function WelcomeScreen(){
+  const [countryCode, setCountryCode] = useState<CountryCode>('FR')
+  const [country, setCountry] = useState<Country>(null)
+  const [withCountryNameButton, setWithCountryNameButton] = useState<boolean>(
+    false,
   )
-})
+  const [withFlag, setWithFlag] = useState<boolean>(true)
+  const [withEmoji, setWithEmoji] = useState<boolean>(true)
+  const [withFilter, setWithFilter] = useState<boolean>(true)
+  const [withAlphaFilter, setWithAlphaFilter] = useState<boolean>(false)
+  const [withCallingCode, setWithCallingCode] = useState<boolean>(false)
+  const [show, setShow] = useState(false);
 
-const $container: ViewStyle = {
-  flex: 1,
-  backgroundColor: colors.background,
-}
+  const onSelect = (country: Country) => {
+    setCountryCode(country.cca2)
+    setCountry(country)
+  }
+  return (
+    <View>
+    <TouchableOpacity
+      onPress={() => setShow(true)}>
+      <Text>
+          {countryCode}
+      </Text>
+    </TouchableOpacity>
 
-const $topContainer: ViewStyle = {
-  flexShrink: 1,
-  flexGrow: 1,
-  flexBasis: "57%",
-  justifyContent: "center",
-  paddingHorizontal: spacing.large,
-}
+    <CountryPicker
+            {...{
+              countryCode,
+              withFilter,
+              withFlag,
+              withCountryNameButton,
+              withAlphaFilter,
+              withCallingCode,
+              withEmoji,
+              onSelect,
+              show
+            }}
+      // when picker button press you will get the country object with dial code
+      // pickerButtonOnPress={(item) => {
+      //   setCountryCode(item.dial_code);
+      //   setShow(false);
+      // }}
+    />
+  </View>
+    // <View>
+    //   <Text>Welcome to Country Picker !</Text>
+    //   <TouchableOpacity
+    //     onPress={() => setShow(true)}
 
-const $bottomContainer: ViewStyle = {
-  flexShrink: 1,
-  flexGrow: 0,
-  flexBasis: "43%",
-  backgroundColor: colors.palette.neutral100,
-  borderTopLeftRadius: 16,
-  borderTopRightRadius: 16,
-  paddingHorizontal: spacing.large,
-  justifyContent: "space-around",
-}
-const $welcomeLogo: ImageStyle = {
-  height: 88,
-  width: "100%",
-  marginBottom: spacing.huge,
-}
-
-const $welcomeFace: ImageStyle = {
-  height: 169,
-  width: 269,
-  position: "absolute",
-  bottom: -47,
-  right: -80,
-  transform: [{ scaleX: isRTL ? -1 : 1 }],
-}
-
-const $welcomeHeading: TextStyle = {
-  marginBottom: spacing.medium,
-}
+    //   >
+    //     <Text>
+    //         {countryCode}
+    //     </Text>
+    //   </TouchableOpacity>
+    //   <CountryPicker
+        // {...{
+        //   countryCode,
+        //   withFilter,
+        //   withFlag,
+        //   withCountryNameButton,
+        //   withAlphaFilter,
+        //   withCallingCode,
+        //   withEmoji,
+        //   onSelect,
+        // }}
+        // visible={show}
+    //   />
+    //   <Text>Press on the flag to open modal</Text>
+    //   {country !== null && (
+    //     <Text>{JSON.stringify(country, null, 2)}</Text>
+    //   )}
+    // </View>
+  )
+});
