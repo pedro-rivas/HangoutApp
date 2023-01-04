@@ -19,8 +19,8 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = observer(function E
   const [isLoading, setIsLoading] = useState(false)
 
   const [bio, setBio] = useState<string>()
-  const [from, setFrom] = useState<string>("PL")
-  const [liveIn, setLiveIn] = useState<string>("PT")
+  const [from, setFrom] = useState<CountryCode>("PL")
+  const [liveIn, setLiveIn] = useState<CountryCode>("PT")
   const [countryCode, setCountryCode] = useState<CountryCode>("FR")
   useEffect(() => {
     ;(async function load() {
@@ -61,7 +61,6 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = observer(function E
         </View>
         <View style={$profileContainerInput}>
           <TextInput
-            style={$inputStyle}
             onChangeText={(value: string) => setUserInfo({ ...userInfo, profession: value })}
             value={userInfo?.profession}
           />
@@ -71,11 +70,19 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = observer(function E
       <View style={$profileWrapper}>
         <View style={$profileContainer}>
           <Icon icon="location" color={colors.palette.neutral700} />
-
           <Text preset="formHelper" style={$textHeading} text="Live in" />
         </View>
         <View style={$profileContainerInput}>
-          <CountryModal countryCode={countryCode} setCountryCode={setCountryCode} />
+          <CountryModal countryCode={liveIn} setCountryCode={setLiveIn} />
+        </View>
+      </View>
+      <View style={$profileWrapper}>
+        <View style={$profileContainer}>
+          <Icon icon="home" color={colors.palette.neutral700} />
+          <Text preset="formHelper" style={$textHeading} text="From" />
+        </View>
+        <View style={$profileContainerInput}>
+          <CountryModal countryCode={from} setCountryCode={setFrom} />
         </View>
       </View>
     </Screen>
@@ -125,7 +132,8 @@ const $profileWrapper: ViewStyle = {
   alignItems: "center",
   justifyContent: "space-between",
   flexWrap: "wrap",
-  flex: 1,
+  height: spacing.huge,
+  alignContent: "center",
 }
 
 const $profileContainer: ViewStyle = {
@@ -140,7 +148,7 @@ const $profileContainer: ViewStyle = {
 const $profileContainerInput: ViewStyle = {
   display: "flex",
   flexDirection: "row",
-  justifyContent: "space-between",
+  justifyContent: "flex-end",
   flexWrap: "wrap",
   flex: 1,
   flexGrow: 2,
