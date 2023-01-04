@@ -22,29 +22,19 @@ interface CardProps extends TouchableOpacityProps {
   HeadingTextProps?: TextProps
   HeadingComponent?: ReactElement
   content?: string
-  contentTxOptions?: TextProps["txOptions"]
   contentStyle?: StyleProp<TextStyle>
   ContentTextProps?: string
   ContentComponent?: ReactElement
   footer?: string
-  footerTxOptions?: TextProps["txOptions"]
   footerStyle?: StyleProp<TextStyle>
   FooterTextProps?: TextProps
   FooterComponent?: ReactElement
 }
 
-/**
- * Cards are useful for displaying related information in a contained way.
- * If a ListItem displays content horizontally, a Card can be used to display content vertically.
- *
- * - [Documentation and Examples](https://github.com/infinitered/ignite/blob/master/docs/Components-Card.md)
- */
 export function Card(props: CardProps) {
   const {
     content,
-    contentTxOptions,
     footer,
-    footerTxOptions,
     heading,
     ContentComponent,
     HeadingComponent,
@@ -56,7 +46,6 @@ export function Card(props: CardProps) {
     contentStyle: $contentStyleOverride,
     headingStyle: $headingStyleOverride,
     footerStyle: $footerStyleOverride,
-    ContentTextProps,
     HeadingTextProps,
     FooterTextProps,
     ...WrapperProps
@@ -83,7 +72,6 @@ export function Card(props: CardProps) {
     isHeadingPresent && { marginTop: spacing.micro },
     isFooterPresent && { marginBottom: spacing.micro },
     $contentStyleOverride,
-    ContentTextProps?.style,
   ]
   const $footerStyle = [
     $footerPresets[preset],
@@ -124,7 +112,6 @@ export function Card(props: CardProps) {
               <Text
                 weight="normal"
                 text={content}
-                txOptions={contentTxOptions}
                 style={$contentStyle}
               />
             ))}
@@ -136,7 +123,6 @@ export function Card(props: CardProps) {
               weight="normal"
               size="xs"
               text={footer}
-              txOptions={footerTxOptions}
               {...FooterTextProps}
               style={$footerStyle}
             />

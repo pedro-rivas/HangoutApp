@@ -57,8 +57,6 @@ export function ListItem(props: ListItemProps) {
     text,
     TextProps,
     topSeparator,
-    tx,
-    txOptions,
     textStyle: $textStyleOverride,
     containerStyle: $containerStyleOverride,
     ...TouchableOpacityProps
@@ -85,7 +83,7 @@ export function ListItem(props: ListItemProps) {
           Component={LeftComponent}
         />
 
-        <Text {...TextProps} text={text} txOptions={txOptions} style={$textStyles}>
+        <Text {...TextProps} text={text} style={$textStyles}>
           {children}
         </Text>
 

@@ -8,7 +8,6 @@ import {
   View,
   ViewStyle,
 } from "react-native"
-import { isRTL, translate } from "../i18n"
 import { colors, spacing, typography } from "../theme"
 import { Text, TextProps } from "./Text"
 
@@ -22,13 +21,10 @@ export interface TextFieldAccessoryProps {
 export interface TextFieldProps extends Omit<TextInputProps, "ref"> {
   status?: "error" | "disabled"
   label?: string
-  labelTxOptions?: TextProps["txOptions"]
   LabelTextProps?: TextProps
   helper?: string
-  helperTxOptions?: TextProps["txOptions"]
   HelperTextProps?: TextProps
   placeholder?: string
-  placeholderTxOptions?: TextProps["txOptions"]
   style?: StyleProp<TextStyle>
   containerStyle?: StyleProp<ViewStyle>
   inputWrapperStyle?: StyleProp<ViewStyle>
@@ -44,11 +40,8 @@ export interface TextFieldProps extends Omit<TextInputProps, "ref"> {
 export const TextField = forwardRef(function TextField(props: TextFieldProps, ref: Ref<TextInput>) {
   const {
     label,
-    labelTxOptions,
     placeholder,
-    placeholderTxOptions,
     helper,
-    helperTxOptions,
     status,
     RightAccessory,
     LeftAccessory,
@@ -81,7 +74,6 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
   const $inputStyles = [
     $inputStyle,
     disabled && { color: colors.textDim },
-    isRTL && { textAlign: "right" as TextStyle["textAlign"] },
     TextInputProps.multiline && { height: "auto" },
     $inputStyleOverride,
   ]
@@ -94,7 +86,6 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
 
   function focusInput() {
     if (disabled) return
-
     input.current?.focus()
   }
 
@@ -111,7 +102,6 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
         <Text
           preset="formLabel"
           text={label}
-          txOptions={labelTxOptions}
           {...LabelTextProps}
           style={$labelStyles}
         />
@@ -152,7 +142,6 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
         <Text
           preset="formHelper"
           text={helper}
-          txOptions={helperTxOptions}
           {...HelperTextProps}
           style={$helperStyles}
         />

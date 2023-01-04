@@ -1,15 +1,16 @@
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import CountryPicker from 'react-native-country-picker-modal'
 import { CountryCode, Country } from '../types'
-import { observer } from 'mobx-react-lite'
 
 interface CountryModalProps {
   title: string,
   countryCode: CountryCode,
   setCountryCode:(code: CountryCode)=> void
 }
-export const CountryModal: FC<CountryModalProps> = observer(function WelcomeScreen(){
+export function CountryModal(props: CountryModalProps) {
+// export const CountryModal: FC<{props: CountryModalProps}> = (...props)=>{
+  const {setCountryCode, title, countryCode} = props
   // const [countryCode, setCountryCode] = useState<CountryCode>('FR')
   // const [country, setCountry] = useState<Country>(null)
 
@@ -25,7 +26,7 @@ export const CountryModal: FC<CountryModalProps> = observer(function WelcomeScre
     <TouchableOpacity
       onPress={() => setShow(true)}>
       <Text>
-          From{countryCode}
+          {title} {countryCode}
       </Text>
     </TouchableOpacity>
 
@@ -44,4 +45,4 @@ export const CountryModal: FC<CountryModalProps> = observer(function WelcomeScre
     />
   </View>
   )
-});
+};
