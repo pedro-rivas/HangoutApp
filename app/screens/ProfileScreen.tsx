@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite"
 import React, { FC, useEffect } from "react"
 import { View, ViewStyle, TextStyle } from "react-native"
 
-import { AutoImage, Icon, Screen, Text, TabInfo, Button } from "../components"
+import { AutoImage, Icon, Screen, Text, Button } from "../components"
 import { useStores } from "../models"
 
 import { TabScreenProps } from "../navigators/BottomNavigator"

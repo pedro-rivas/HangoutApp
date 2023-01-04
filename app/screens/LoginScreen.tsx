@@ -90,7 +90,7 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
         autoCorrect={false}
         keyboardType="email-address"
         label="Email"
-        placeholderTx="loginScreen.emailFieldPlaceholder"
+        placeholder="Enter your email address"
         helper={errors?.authEmail}
         status={errors?.authEmail ? "error" : undefined}
         onSubmitEditing={() => authPasswordInput.current?.focus()}
@@ -105,8 +105,8 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
         autoComplete="password"
         autoCorrect={false}
         secureTextEntry={isAuthPasswordHidden}
-        labelTx="loginScreen.passwordFieldLabel"
-        placeholderTx="loginScreen.passwordFieldPlaceholder"
+        label="Password"
+        placeholder="Super secret password here"
         helper={errors?.authPassword}
         status={errors?.authPassword ? "error" : undefined}
         onSubmitEditing={login}
@@ -115,11 +115,10 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
 
       <Button
         testID="login-button"
-        tx="loginScreen.tapToSignIn"
         style={$tapButton}
         preset="reversed"
         onPress={login}
-      />
+      >Tap to sign in!</Button>
     </Screen>
   )
 })

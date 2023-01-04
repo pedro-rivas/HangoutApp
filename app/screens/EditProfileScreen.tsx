@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite"
 import React, { FC, useEffect, useRef } from "react"
 import { ImageStyle, TextInput, TextStyle, View, ViewStyle } from "react-native"
-import { Button, Icon, IconTypes, Screen, Text, ProfileInput, TextField } from "../components"
+import { Button, Icon, Screen, Text, ProfileInput, TextField } from "../components"
 import { AppStackScreenProps } from "../navigators"
 import { colors, spacing } from "../theme"
 // import countryFlagEmoji from "country-flag-emoji";
