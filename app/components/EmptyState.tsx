@@ -31,11 +31,11 @@ interface EmptyStateProps {
   /**
    * The heading text to display if not using `headingTx`.
    */
-  heading?: TextProps["text"]
+  heading?: string
   /**
    * Heading text which is looked up via i18n.
    */
-  headingTx?: TextProps["tx"]
+  headingTx?: string
   /**
    * Optional heading options to pass to i18n. Useful for interpolation
    * as well as explicitly setting locale or translation fallbacks.
@@ -56,7 +56,7 @@ interface EmptyStateProps {
   /**
    * Content text which is looked up via i18n.
    */
-  contentTx?: TextProps["tx"]
+  contentTx?: string
   /**
    * Optional content options to pass to i18n. Useful for interpolation
    * as well as explicitly setting locale or translation fallbacks.
@@ -77,7 +77,7 @@ interface EmptyStateProps {
   /**
    * Button text which is looked up via i18n.
    */
-  buttonTx?: TextProps["tx"]
+  buttonTx?: string
   /**
    * Optional button options to pass to i18n. Useful for interpolation
    * as well as explicitly setting locale or translation fallbacks.
@@ -182,21 +182,19 @@ export function EmptyState(props: EmptyStateProps) {
         <Text
           preset="subheading"
           text={heading}
-          tx={headingTx}
           txOptions={headingTxOptions}
           {...HeadingTextProps}
           style={$headingStyles}
-        />
+        >{headingTx} /</Text>
       )}
 
       {isContentPresent && (
         <Text
           text={content}
-          tx={contentTx}
           txOptions={contentTxOptions}
           {...ContentTextProps}
           style={$contentStyles}
-        />
+        >{contentTx} /</Text>
       )}
 
       {isButtonPresent && (

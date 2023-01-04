@@ -1,19 +1,18 @@
-/**
- * The app navigator (formerly "AppNavigator" and "MainNavigator") is used for the primary
- * navigation flows of your app.
- * Generally speaking, it will contain an auth flow (registration, login, forgot password)
- * and a "main" flow which the user will use once logged in.
- */
-import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native"
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer, // @demo remove-current-line
+} from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { StackScreenProps } from "@react-navigation/stack"
 import { observer } from "mobx-react-lite"
 import React from "react"
 import { useColorScheme } from "react-native"
 import Config from "../config"
-import { WelcomeScreen } from "../screens"
+import { useStores } from "../models" // @demo remove-current-line
+import { LoginScreen, EditProfileScreen } from "../screens"
+import { BottomNavigator } from "./BottomNavigator" // @demo remove-current-line
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
-import { NativeBaseProvider, Box } from "native-base";
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -29,8 +28,9 @@ import { NativeBaseProvider, Box } from "native-base";
  *   https://reactnavigation.org/docs/typescript/#organizing-types
  */
 export type AppStackParamList = {
-  Welcome: undefined
-  // 🔥 Your screens go here
+  EditProfile: undefined
+  Login: undefined
+  Home: undefined
 }
 
 /**
@@ -45,14 +45,33 @@ export type AppStackScreenProps<T extends keyof AppStackParamList> = StackScreen
 >
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
-const Stack = createNativeStackNavigator<AppStackParamList>()
+const Tab = createNativeStackNavigator<AppStackParamList>()
 
 const AppStack = observer(function AppStack() {
+  const {
+    authenticationStore: { isAuthenticated },
+  } = useStores()
+
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Welcome" component={WelcomeScreen} />
-      {/** 🔥 Your screens go here */}
-    </Stack.Navigator>
+    <Tab.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName={isAuthenticated ? "Home" : "Login"} // @demo remove-current-line
+    >
+      {isAuthenticated ? (
+        <>
+          <Tab.Group>
+            <Tab.Screen name="Home" component={BottomNavigator} />
+          </Tab.Group>
+          <Tab.Group>
+            <Tab.Screen name="EditProfile" component={EditProfileScreen} />
+          </Tab.Group>
+        </>
+      ) : (
+        <>
+          <Tab.Screen name="Login" component={LoginScreen} />
+        </>
+      )}
+    </Tab.Navigator>
   )
 })
 
@@ -69,9 +88,7 @@ export const AppNavigator = observer(function AppNavigator(props: NavigationProp
       theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
       {...props}
     >
-      <NativeBaseProvider>
       <AppStack />
-      </NativeBaseProvider>
     </NavigationContainer>
   )
 })
