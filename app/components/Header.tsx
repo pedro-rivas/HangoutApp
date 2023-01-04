@@ -21,18 +21,15 @@ export interface HeaderProps {
   containerStyle?: StyleProp<ViewStyle>
   backgroundColor?: string
   title?: string
-  titleTxOptions?: TextProps["txOptions"]
   leftIcon?: IconTypes
   leftIconColor?: string
   leftText?: TextProps["text"]
   LeftActionComponent?: ReactElement
-  leftTxOptions?: TextProps["txOptions"]
   onLeftPress?: TouchableOpacityProps["onPress"]
   rightIcon?: IconTypes
   rightIconColor?: string
   rightText?: string
   RightActionComponent?: ReactElement
-  rightTxOptions?: TextProps["txOptions"]
   onRightPress?: TouchableOpacityProps["onPress"]
   safeAreaEdges?: ExtendedEdge[]
 }
@@ -42,8 +39,6 @@ interface HeaderActionProps {
   icon?: IconTypes
   iconColor?: string
   text?: TextProps["text"]
-  tx?: TextProps["tx"]
-  txOptions?: TextProps["txOptions"]
   onPress?: TouchableOpacityProps["onPress"]
   ActionComponent?: ReactElement
 }
@@ -61,14 +56,12 @@ export function Header(props: HeaderProps) {
     leftIcon,
     leftIconColor,
     leftText,
-    leftTxOptions,
     onLeftPress,
     onRightPress,
     RightActionComponent,
     rightIcon,
     rightIconColor,
     rightText,
-    rightTxOptions,
     safeAreaEdges = ["top"],
     title,
     titleMode = "center",
@@ -90,7 +83,6 @@ export function Header(props: HeaderProps) {
           icon={leftIcon}
           iconColor={leftIconColor}
           onPress={onLeftPress}
-          txOptions={leftTxOptions}
           backgroundColor={backgroundColor}
           ActionComponent={LeftActionComponent}
         />
@@ -118,7 +110,6 @@ export function Header(props: HeaderProps) {
           icon={rightIcon}
           iconColor={rightIconColor}
           onPress={onRightPress}
-          txOptions={rightTxOptions}
           backgroundColor={backgroundColor}
           ActionComponent={RightActionComponent}
         />
@@ -128,9 +119,9 @@ export function Header(props: HeaderProps) {
 }
 
 function HeaderAction(props: HeaderActionProps) {
-  const { backgroundColor, icon, text, tx, txOptions, onPress, ActionComponent, iconColor } = props
+  const { backgroundColor, icon, text, onPress, ActionComponent, iconColor } = props
 
-  const content = tx ? translate(tx, txOptions) : text
+  const content = text
 
   if (ActionComponent) return ActionComponent
 

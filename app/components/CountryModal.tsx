@@ -4,17 +4,21 @@ import CountryPicker from 'react-native-country-picker-modal'
 import { CountryCode, Country } from '../types'
 import { observer } from 'mobx-react-lite'
 
-
-export const CountryModal: FC = observer(function WelcomeScreen(){
-  const [countryCode, setCountryCode] = useState<CountryCode>('FR')
-  const [country, setCountry] = useState<Country>(null)
+interface CountryModalProps {
+  title: string,
+  countryCode: CountryCode,
+  setCountryCode:(code: CountryCode)=> void
+}
+export const CountryModal: FC<CountryModalProps> = observer(function WelcomeScreen(){
+  // const [countryCode, setCountryCode] = useState<CountryCode>('FR')
+  // const [country, setCountry] = useState<Country>(null)
 
 
   const [show, setShow] = useState(false);
 
   const onSelect = (country: Country) => {
     setCountryCode(country.cca2)
-    setCountry(country)
+    // setCountry(country)
   }
   return (
     <View>

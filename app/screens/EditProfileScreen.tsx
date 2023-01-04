@@ -60,17 +60,23 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = observer(function E
       </Text>
       <View style={$profileWrapper}>
         <View style={$profileContainer}>
-          <Icon icon="work" style={$iconStyle} />
+          <Icon icon="work"  color={colors.palette.neutral700} />
           <Text preset="formHelper" style={$textHeading} text="Work" />
         </View>
         <View style={$profileContainerInput}>
           <TextInput style={$inputStyle} onChangeText={(value: string)=>setUserInfo({...userInfo, profession: value})} value={userInfo?.profession}  />
-          <Icon icon="caretRight" color={colors.palette.neutral400} />
+          <Icon icon="caretRight" color={colors.palette.neutral700} />
         </View>
       </View>
-      <View style={$profileContainerInput}>
-          <Text preset="formHelper" style={$textHeading} text="From" />
-          <Icon icon="caretRight" color={colors.palette.neutral400} />
+      <View style={$profileWrapper}>
+        <View style={$profileContainer}>
+            <Icon icon="location" color={colors.palette.neutral700} />
+
+          <Text preset="formHelper" style={$textHeading} text="Live in" />
+        </View>
+        <View style={$profileContainerInput}>
+          
+        </View>
         </View>
     </Screen>
   )
@@ -147,4 +153,3 @@ const $inputStyle: ViewStyle = {
   // width: 200,
 }
 
-const $iconStyle: ImageStyle = { width: 20, height: 20 }

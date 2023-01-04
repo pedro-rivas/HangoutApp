@@ -14,17 +14,14 @@ interface EmptyStateProps {
   imageStyle?: StyleProp<ImageStyle>
   ImageProps?: Omit<ImageProps, "source">
   heading?: string
-  headingTxOptions?: TextProps["txOptions"]
   headingStyle?: StyleProp<TextStyle>
   HeadingTextProps?: TextProps
   content?: TextProps["text"]
   contentTx?: string
-  contentTxOptions?: TextProps["txOptions"]
   contentStyle?: StyleProp<TextStyle>
   ContentTextProps?: TextProps
   button?: TextProps["text"]
   buttonTx?: string
-  buttonTxOptions?: TextProps["txOptions"]
   buttonStyle?: ButtonProps["style"]
   buttonTextStyle?: ButtonProps["textStyle"]
   buttonOnPress?: ButtonProps["onPress"]
@@ -52,12 +49,8 @@ export function EmptyState(props: EmptyStateProps) {
     button = preset?.button,
     buttonTx,
     buttonOnPress,
-    buttonTxOptions,
     content = preset?.content,
-    contentTx,
-    contentTxOptions,
     heading = preset?.heading,
-    headingTxOptions,
     imageSource = preset?.imageSource,
     style: $containerStyleOverride,
     buttonStyle: $buttonStyleOverride,
@@ -73,7 +66,7 @@ export function EmptyState(props: EmptyStateProps) {
 
   const isImagePresent = !!imageSource
   const isHeadingPresent = !!(heading)
-  const isContentPresent = !!(content || contentTx)
+  const isContentPresent = !!(content)
   const isButtonPresent = !!(button || buttonTx)
 
   const $containerStyles = [$containerStyleOverride]
@@ -111,7 +104,6 @@ export function EmptyState(props: EmptyStateProps) {
         <Text
           preset="subheading"
           text={heading}
-          txOptions={headingTxOptions}
           {...HeadingTextProps}
           style={$headingStyles}
         >/</Text>
@@ -120,17 +112,15 @@ export function EmptyState(props: EmptyStateProps) {
       {isContentPresent && (
         <Text
           text={content}
-          txOptions={contentTxOptions}
           {...ContentTextProps}
           style={$contentStyles}
-        >{contentTx} /</Text>
+        > /</Text>
       )}
 
       {isButtonPresent && (
         <Button
           onPress={buttonOnPress}
           text={button}
-          txOptions={buttonTxOptions}
           textStyle={$buttonTextStyleOverride}
           {...ButtonProps}
           style={$buttonStyles}
