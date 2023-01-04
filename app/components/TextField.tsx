@@ -45,11 +45,9 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
   const {
     label,
     labelTxOptions,
-    placeholderTx,
     placeholder,
     placeholderTxOptions,
     helper,
-    helperTx,
     helperTxOptions,
     status,
     RightAccessory,
@@ -65,9 +63,7 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
 
   const disabled = TextInputProps.editable === false || status === "disabled"
 
-  const placeholderContent = placeholderTx
-    ? translate(placeholderTx, placeholderTxOptions)
-    : placeholder
+  const placeholderContent = placeholder
 
   const $containerStyles = [$containerStyleOverride]
 
@@ -111,11 +107,10 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
       onPress={focusInput}
       accessibilityState={{ disabled }}
     >
-      {!!(label || labelTx) && (
+      {!!(label) && (
         <Text
           preset="formLabel"
           text={label}
-          tx={labelTx}
           txOptions={labelTxOptions}
           {...LabelTextProps}
           style={$labelStyles}
@@ -153,11 +148,10 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
         )}
       </View>
 
-      {!!(helper || helperTx) && (
+      {!!(helper) && (
         <Text
           preset="formHelper"
           text={helper}
-          tx={helperTx}
           txOptions={helperTxOptions}
           {...HelperTextProps}
           style={$helperStyles}
@@ -188,7 +182,6 @@ const $inputStyle: TextStyle = {
   color: colors.text,
   fontSize: 16,
   height: 24,
-  // https://github.com/facebook/react-native/issues/21720#issuecomment-532642093
   paddingVertical: 0,
   paddingHorizontal: 0,
   marginVertical: spacing.extraSmall,

@@ -18,52 +18,16 @@ export interface ButtonAccessoryProps {
 }
 
 export interface ButtonProps extends PressableProps {
-  /**
-   * Text which is looked up via i18n.
-   */
-  tx?: TextProps["tx"]
-  /**
-   * The text to display if not using `tx` or nested components.
-   */
+
   text?: TextProps["text"]
-  /**
-   * Optional options to pass to i18n. Useful for interpolation
-   * as well as explicitly setting locale or translation fallbacks.
-   */
   txOptions?: TextProps["txOptions"]
-  /**
-   * An optional style override useful for padding & margin.
-   */
   style?: StyleProp<ViewStyle>
-  /**
-   * An optional style override for the "pressed" state.
-   */
   pressedStyle?: StyleProp<ViewStyle>
-  /**
-   * An optional style override for the button text.
-   */
   textStyle?: StyleProp<TextStyle>
-  /**
-   * An optional style override for the button text when in the "pressed" state.
-   */
   pressedTextStyle?: StyleProp<TextStyle>
-  /**
-   * One of the different types of button presets.
-   */
   preset?: Presets
-  /**
-   * An optional component to render on the right side of the text.
-   * Example: `RightAccessory={(props) => <View {...props} />}`
-   */
   RightAccessory?: ComponentType<ButtonAccessoryProps>
-  /**
-   * An optional component to render on the left side of the text.
-   * Example: `LeftAccessory={(props) => <View {...props} />}`
-   */
   LeftAccessory?: ComponentType<ButtonAccessoryProps>
-  /**
-   * Children components.
-   */
   children?: React.ReactNode
 }
 
@@ -75,7 +39,6 @@ export interface ButtonProps extends PressableProps {
  */
 export function Button(props: ButtonProps) {
   const {
-    tx,
     text,
     txOptions,
     style: $viewStyleOverride,
@@ -110,7 +73,7 @@ export function Button(props: ButtonProps) {
         <>
           {!!LeftAccessory && <LeftAccessory style={$leftAccessoryStyle} pressableState={state} />}
 
-          <Text tx={tx} text={text} txOptions={txOptions} style={$textStyle(state)}>
+          <Text text={text} txOptions={txOptions} style={$textStyle(state)}>
             {children}
           </Text>
 

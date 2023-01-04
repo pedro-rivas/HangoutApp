@@ -68,6 +68,10 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = observer(function E
           <Icon icon="caretRight" color={colors.palette.neutral400} />
         </View>
       </View>
+      <View style={$profileContainerInput}>
+          <Text preset="formHelper" style={$textHeading} text="From" />
+          <Icon icon="caretRight" color={colors.palette.neutral400} />
+        </View>
     </Screen>
   )
 })

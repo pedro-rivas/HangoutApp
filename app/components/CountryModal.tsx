@@ -5,17 +5,11 @@ import { CountryCode, Country } from '../types'
 import { observer } from 'mobx-react-lite'
 
 
-export const WelcomeScreen: FC = observer(function WelcomeScreen(){
+export const CountryModal: FC = observer(function WelcomeScreen(){
   const [countryCode, setCountryCode] = useState<CountryCode>('FR')
   const [country, setCountry] = useState<Country>(null)
-  const [withCountryNameButton, setWithCountryNameButton] = useState<boolean>(
-    false,
-  )
-  const [withFlag, setWithFlag] = useState<boolean>(true)
-  const [withEmoji, setWithEmoji] = useState<boolean>(true)
-  const [withFilter, setWithFilter] = useState<boolean>(true)
-  const [withAlphaFilter, setWithAlphaFilter] = useState<boolean>(false)
-  const [withCallingCode, setWithCallingCode] = useState<boolean>(false)
+
+
   const [show, setShow] = useState(false);
 
   const onSelect = (country: Country) => {
@@ -34,12 +28,12 @@ export const WelcomeScreen: FC = observer(function WelcomeScreen(){
     <CountryPicker
             {...{
               countryCode,
-              withFilter,
-              withFlag,
-              withCountryNameButton,
-              withAlphaFilter,
-              withCallingCode,
-              withEmoji,
+              withFilter: true,
+              withFlag: true,
+              withCountryNameButton: true,
+              withAlphaFilter: false,
+              withCallingCode: false,
+              withEmoji: false,
               onSelect,
               show
             }}
