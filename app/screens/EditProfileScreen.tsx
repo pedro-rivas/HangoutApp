@@ -1,9 +1,10 @@
 import { observer } from "mobx-react-lite"
-import React, { FC, useEffect, useRef } from "react"
+import React, { FC, useEffect, useState } from "react"
 import { ImageStyle, TextInput, TextStyle, View, ViewStyle } from "react-native"
-import { Button, Icon, Screen, Text, ProfileInput, TextField } from "../components"
+import { Button, Icon, Screen, Text, ProfileInput, TextField, CountryModal } from "../components"
 import { AppStackScreenProps } from "../navigators"
 import { colors, spacing } from "../theme"
+import { CountryCode } from "react-native-country-picker-modal"
 // import countryFlagEmoji from "country-flag-emoji";
 
 interface EditProfileScreenProps extends AppStackScreenProps<"Login"> {}
@@ -11,17 +12,16 @@ interface EditProfileScreenProps extends AppStackScreenProps<"Login"> {}
 export const EditProfileScreen: FC<EditProfileScreenProps> = observer(function EditProfileScreen(
   _props,
 ) {
-  const [userInfo, setUserInfo] = React.useState<{
+  const [userInfo, setUserInfo] = useState<{
     name: string
     profession?: string
   }>()
-  const [isLoading, setIsLoading] = React.useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-  const [bio, setBio] = React.useState<string>()
-  const [from, setFrom] = React.useState<string>("PL")
-  const [liveIn, setLiveIn] = React.useState<string>("PT")
-  const authPasswordInput = useRef<TextInput>();
-  
+  const [bio, setBio] = useState<string>()
+  const [from, setFrom] = useState<string>("PL")
+  const [liveIn, setLiveIn] = useState<string>("PT")
+  const [countryCode, setCountryCode] = useState<CountryCode>("FR")
   useEffect(() => {
     ;(async function load() {
       setIsLoading(true)
@@ -45,9 +45,7 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = observer(function E
           Back
         </Text>
       </Button>
-      <Text preset="subheading" >
-        My Bio
-      </Text>
+      <Text preset="subheading">My Bio</Text>
       <TextInput
         multiline={true}
         numberOfLines={4}
@@ -55,29 +53,31 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = observer(function E
         onChangeText={setBio}
         value={bio}
       />
-      <Text preset="subheading" >
-        My Basis
-      </Text>
+      <Text preset="subheading">My Basis</Text>
       <View style={$profileWrapper}>
         <View style={$profileContainer}>
-          <Icon icon="work"  color={colors.palette.neutral700} />
+          <Icon icon="work" color={colors.palette.neutral700} />
           <Text preset="formHelper" style={$textHeading} text="Work" />
         </View>
         <View style={$profileContainerInput}>
-          <TextInput style={$inputStyle} onChangeText={(value: string)=>setUserInfo({...userInfo, profession: value})} value={userInfo?.profession}  />
+          <TextInput
+            style={$inputStyle}
+            onChangeText={(value: string) => setUserInfo({ ...userInfo, profession: value })}
+            value={userInfo?.profession}
+          />
           <Icon icon="caretRight" color={colors.palette.neutral700} />
         </View>
       </View>
       <View style={$profileWrapper}>
         <View style={$profileContainer}>
-            <Icon icon="location" color={colors.palette.neutral700} />
+          <Icon icon="location" color={colors.palette.neutral700} />
 
           <Text preset="formHelper" style={$textHeading} text="Live in" />
         </View>
         <View style={$profileContainerInput}>
-          
+          <CountryModal countryCode={countryCode} setCountryCode={setCountryCode} />
         </View>
-        </View>
+      </View>
     </Screen>
   )
 })
@@ -122,10 +122,10 @@ const $textHeading: ViewStyle = {
 const $profileWrapper: ViewStyle = {
   display: "flex",
   flexDirection: "row",
-  alignItems: 'center',
+  alignItems: "center",
   justifyContent: "space-between",
   flexWrap: "wrap",
-  flex: 1
+  flex: 1,
 }
 
 const $profileContainer: ViewStyle = {
@@ -134,9 +134,8 @@ const $profileContainer: ViewStyle = {
   justifyContent: "flex-start",
   flexWrap: "wrap",
   flex: 1,
-  flexShrink: 2
+  flexShrink: 2,
 }
-
 
 const $profileContainerInput: ViewStyle = {
   display: "flex",
@@ -145,11 +144,9 @@ const $profileContainerInput: ViewStyle = {
   flexWrap: "wrap",
   flex: 1,
   flexGrow: 2,
-  paddingTop: 5
+  paddingTop: 5,
 }
-
 
 const $inputStyle: ViewStyle = {
   // width: 200,
 }
-

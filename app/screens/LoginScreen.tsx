@@ -77,9 +77,18 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
       contentContainerStyle={$screenContentContainer}
       safeAreaEdges={["top", "bottom"]}
     >
-      <Text testID="login-heading" preset="heading" style={$signIn} >signIn</Text>
-      <Text preset="subheading" style={$enterDetails}>"Enter your details below to unlock top secret info. You'll never guess what we've got waiting. Or maybe you will; it's not rocket science here.</Text>
-      {attemptsCount > 2 && <Text size="sm" weight="light" style={$hint} >Hint: you can use any email address and your favorite password :)</Text>}
+      <Text testID="login-heading" preset="heading" style={$signIn}>
+        signIn
+      </Text>
+      <Text preset="subheading" style={$enterDetails}>
+        "Enter your details below to unlock top secret info. You'll never guess what we've got
+        waiting. Or maybe you will; it's not rocket science here.
+      </Text>
+      {attemptsCount > 2 && (
+        <Text size="sm" weight="light" style={$hint}>
+          Hint: you can use any email address and your favorite password :)
+        </Text>
+      )}
 
       <TextField
         value={authEmail}
@@ -113,12 +122,9 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
         RightAccessory={PasswordRightAccessory}
       />
 
-      <Button
-        testID="login-button"
-        style={$tapButton}
-        preset="reversed"
-        onPress={login}
-      >Tap to sign in!</Button>
+      <Button testID="login-button" style={$tapButton} preset="reversed" onPress={login}>
+        Tap to sign in!
+      </Button>
     </Screen>
   )
 })

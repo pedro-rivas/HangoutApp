@@ -68,7 +68,9 @@ export const MessagesScreen: FC<TabScreenProps<"Messages">> = function MessagesS
         <Text style={$hint} tx={`demoDebugScreen.${Platform.OS}ReactotronHint` as const} />
       </View> */}
       <View style={$buttonContainer}>
-        <Button style={$button} onPress={logout} >logout </Button>
+        <Button style={$button} onPress={logout}>
+          logout{" "}
+        </Button>
       </View>
     </Screen>
   )

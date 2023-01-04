@@ -99,22 +99,11 @@ export function Card(props: CardProps) {
         <HeaderContentWrapper>
           {HeadingComponent ||
             (isHeadingPresent && (
-              <Text
-                weight="bold"
-                text={heading}
-                {...HeadingTextProps}
-                style={$headingStyle}
-              />
+              <Text weight="bold" text={heading} {...HeadingTextProps} style={$headingStyle} />
             ))}
 
           {ContentComponent ||
-            (isContentPresent && (
-              <Text
-                weight="normal"
-                text={content}
-                style={$contentStyle}
-              />
-            ))}
+            (isContentPresent && <Text weight="normal" text={content} style={$contentStyle} />)}
         </HeaderContentWrapper>
 
         {FooterComponent ||

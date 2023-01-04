@@ -13,27 +13,32 @@ const reactNativeNewsletterLogo = require("../../assets/images/rnn-logo.png")
 export const HomeScreen: FC<TabScreenProps<"HomeView">> = function HomeScreen(_props) {
   return (
     <Screen preset="scroll" contentContainerStyle={$container} safeAreaEdges={["top"]}>
-      <Text preset="heading" style={$title}>title</Text>
-      <Text style={$tagline} >title</Text>
+      <Text preset="heading" style={$title}>
+        title
+      </Text>
+      <Text style={$tagline}>title</Text>
 
-      <Text preset="subheading" >demoCommunityScreen.joinUsOnSlackTitle</Text>
+      <Text preset="subheading">demoCommunityScreen.joinUsOnSlackTitle</Text>
       <Text style={$description}>demoCommunityScreen.joinUsOnSlack</Text>
       <ListItem
         leftIcon="slack"
         rightIcon={isRTL ? "caretLeft" : "caretRight"}
         onPress={() => openLinkInBrowser("https://community.infinite.red/")}
-      >joinSlackLink</ListItem>
+      >
+        joinSlackLink
+      </ListItem>
 
       <ListItem
         leftIcon="github"
         rightIcon={isRTL ? "caretLeft" : "caretRight"}
         onPress={() => openLinkInBrowser("https://github.com/infinitered/ignite")}
-      >contributeToIgniteLink</ListItem>
+      >
+        contributeToIgniteLink
+      </ListItem>
 
-      <Text
-        preset="subheading"
-        style={$sectionTitle}
-      >theLatestInReactNativeTitle</Text>
+      <Text preset="subheading" style={$sectionTitle}>
+        theLatestInReactNativeTitle
+      </Text>
       <Text style={$description}>theLatestInReactNative</Text>
       <ListItem
         bottomSeparator
@@ -44,7 +49,9 @@ export const HomeScreen: FC<TabScreenProps<"HomeView">> = function HomeScreen(_p
           </View>
         }
         onPress={() => openLinkInBrowser("https://reactnativeradio.com/")}
-      >reactNativeRadioLink</ListItem>
+      >
+        reactNativeRadioLink
+      </ListItem>
       <ListItem
         bottomSeparator
         rightIcon={isRTL ? "caretLeft" : "caretRight"}
@@ -54,7 +61,9 @@ export const HomeScreen: FC<TabScreenProps<"HomeView">> = function HomeScreen(_p
           </View>
         }
         onPress={() => openLinkInBrowser("https://reactnativenewsletter.com/")}
-      >reactNativeNewsletterLink</ListItem>
+      >
+        reactNativeNewsletterLink
+      </ListItem>
       <ListItem
         bottomSeparator
         rightIcon={isRTL ? "caretLeft" : "caretRight"}
@@ -64,7 +73,9 @@ export const HomeScreen: FC<TabScreenProps<"HomeView">> = function HomeScreen(_p
           </View>
         }
         onPress={() => openLinkInBrowser("https://rn.live/")}
-      >reactNativeLiveLink</ListItem>
+      >
+        reactNativeLiveLink
+      </ListItem>
     </Screen>
   )
 }

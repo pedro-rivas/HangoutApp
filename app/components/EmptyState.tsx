@@ -65,8 +65,8 @@ export function EmptyState(props: EmptyStateProps) {
   } = props
 
   const isImagePresent = !!imageSource
-  const isHeadingPresent = !!(heading)
-  const isContentPresent = !!(content)
+  const isHeadingPresent = !!heading
+  const isContentPresent = !!content
   const isButtonPresent = !!(button || buttonTx)
 
   const $containerStyles = [$containerStyleOverride]
@@ -101,20 +101,16 @@ export function EmptyState(props: EmptyStateProps) {
       {isImagePresent && <Image source={imageSource} {...ImageProps} style={$imageStyles} />}
 
       {isHeadingPresent && (
-        <Text
-          preset="subheading"
-          text={heading}
-          {...HeadingTextProps}
-          style={$headingStyles}
-        >/</Text>
+        <Text preset="subheading" text={heading} {...HeadingTextProps} style={$headingStyles}>
+          /
+        </Text>
       )}
 
       {isContentPresent && (
-        <Text
-          text={content}
-          {...ContentTextProps}
-          style={$contentStyles}
-        > /</Text>
+        <Text text={content} {...ContentTextProps} style={$contentStyles}>
+          {" "}
+          /
+        </Text>
       )}
 
       {isButtonPresent && (

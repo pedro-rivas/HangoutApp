@@ -98,14 +98,7 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
       onPress={focusInput}
       accessibilityState={{ disabled }}
     >
-      {!!(label) && (
-        <Text
-          preset="formLabel"
-          text={label}
-          {...LabelTextProps}
-          style={$labelStyles}
-        />
-      )}
+      {!!label && <Text preset="formLabel" text={label} {...LabelTextProps} style={$labelStyles} />}
 
       <View style={$inputWrapperStyles}>
         {!!LeftAccessory && (
@@ -138,13 +131,8 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
         )}
       </View>
 
-      {!!(helper) && (
-        <Text
-          preset="formHelper"
-          text={helper}
-          {...HelperTextProps}
-          style={$helperStyles}
-        />
+      {!!helper && (
+        <Text preset="formHelper" text={helper} {...HelperTextProps} style={$helperStyles} />
       )}
     </TouchableOpacity>
   )

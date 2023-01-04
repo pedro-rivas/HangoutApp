@@ -76,7 +76,7 @@ export const ExploreScreen: FC<TabScreenProps<"Explore">> = observer(function Ex
             <EmptyState
               preset="generic"
               style={$emptyState}
-              headingTx='head'
+              headingTx="head"
               contentTx={
                 episodeStore.favoritesOnly
                   ? "demoPodcastListScreen.noFavoritesEmptyState.content"
@@ -91,7 +91,7 @@ export const ExploreScreen: FC<TabScreenProps<"Explore">> = observer(function Ex
         }
         ListHeaderComponent={
           <View style={$heading}>
-            <Text preset="heading" >title</Text>
+            <Text preset="heading">title</Text>
             {(episodeStore.favoritesOnly || episodeStore.episodesForList.length > 0) && (
               <View style={$toggle}>
                 <Toggle
