@@ -22,6 +22,7 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = observer(function E
   const [from, setFrom] = useState<CountryCode>("PL")
   const [liveIn, setLiveIn] = useState<CountryCode>("PT")
   const [countryCode, setCountryCode] = useState<CountryCode>("FR")
+  
   useEffect(() => {
     ;(async function load() {
       setIsLoading(true)
@@ -153,8 +154,4 @@ const $profileContainerInput: ViewStyle = {
   flex: 1,
   flexGrow: 2,
   paddingTop: 5,
-}
-
-const $inputStyle: ViewStyle = {
-  // width: 200,
 }

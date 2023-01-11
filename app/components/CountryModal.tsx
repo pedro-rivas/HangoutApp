@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { View, TouchableOpacity, StyleProp, ViewStyle } from "react-native"
+import { View, TouchableOpacity, ViewStyle } from "react-native"
 import CountryPicker from "react-native-country-picker-modal"
 import { CountryCode, Country } from "../types"
 import { colors } from "../theme"
@@ -10,7 +10,6 @@ interface CountryModalProps {
 }
 export function CountryModal(props: CountryModalProps) {
   const { setCountryCode, countryCode } = props
-
   const [show, setShow] = useState(false)
 
   const onSelect = (country: Country) => {
@@ -19,7 +18,7 @@ export function CountryModal(props: CountryModalProps) {
   }
   return (
     <View style={$CCStyle}>
-      <TouchableOpacity onPress={() => setShow(true)}></TouchableOpacity>
+      <TouchableOpacity onPress={() => setShow(true)}>
       <CountryPicker
         {...{
           countryCode,
@@ -33,18 +32,16 @@ export function CountryModal(props: CountryModalProps) {
           show,
         }}
       />
+      </TouchableOpacity>
     </View>
   )
 }
 
 const $CCStyle: ViewStyle = {
   borderWidth: 1,
-  borderColor: colors.palette.neutral200,
-  padding: 0,
-  margin: 0,
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  paddingLeft: 10,
-  backgroundColor:  colors.palette.neutral300,
+  borderColor: colors.palette.accent300,
+  paddingLeft: 8,
+  paddingBottom:5,
+  backgroundColor:  colors.palette.accent200,
+  borderRadius: 10
 }
