@@ -91,6 +91,9 @@ export const iconRegistry = {
   standUpComedy: require("../../assets/icons/color/standing.png"),
   beaches: require("../../assets/icons/color/vacations.png"),
   yoga: require("../../assets/icons/color/yoga.png"),
+  glob: require("../../assets/icons/glob.png"),
+  globo: require("../../assets/icons/globo.png"),
+
 }
 
 const $imageStyle: ImageStyle = {

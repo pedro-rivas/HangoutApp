@@ -5,7 +5,6 @@ import { Button, Icon, Screen, Text, ProfileInput, TextField, CountryModal } fro
 import { AppStackScreenProps } from "../navigators"
 import { colors, spacing } from "../theme"
 import { CountryCode } from "react-native-country-picker-modal"
-// import countryFlagEmoji from "country-flag-emoji";
 
 interface EditProfileScreenProps extends AppStackScreenProps<"Login"> {}
 
@@ -70,20 +69,10 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = observer(function E
       </View>
       <View style={$profileWrapper}>
         <View style={$profileContainer}>
-          <Icon icon="location" color={colors.palette.neutral700} />
-          <Text preset="formHelper" style={$textHeading} text="Live in" />
+        <CountryModal countryCode={liveIn} setCountryCode={setLiveIn} title="Live in" />
         </View>
-        <View style={$profileContainerInput}>
-          <CountryModal countryCode={liveIn} setCountryCode={setLiveIn} />
-        </View>
-      </View>
-      <View style={$profileWrapper}>
         <View style={$profileContainer}>
-          <Icon icon="home" color={colors.palette.neutral700} />
-          <Text preset="formHelper" style={$textHeading} text="From" />
-        </View>
-        <View style={$profileContainerInput}>
-          <CountryModal countryCode={from} setCountryCode={setFrom} />
+        <CountryModal countryCode={from} setCountryCode={setFrom} title="From" />
         </View>
       </View>
     </Screen>
@@ -153,5 +142,5 @@ const $profileContainerInput: ViewStyle = {
   flexWrap: "wrap",
   flex: 1,
   flexGrow: 2,
-  paddingTop: 5,
+  paddingTop: 2,
 }
