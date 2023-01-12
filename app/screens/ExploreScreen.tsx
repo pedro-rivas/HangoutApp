@@ -76,12 +76,7 @@ export const ExploreScreen: FC<TabScreenProps<"Explore">> = observer(function Ex
             <EmptyState
               preset="generic"
               style={$emptyState}
-              headingTx="head"
-              contentTx={
-                episodeStore.favoritesOnly
-                  ? "demoPodcastListScreen.noFavoritesEmptyState.content"
-                  : undefined
-              }
+              content='hello'
               button={episodeStore.favoritesOnly ? null : undefined}
               buttonOnPress={manualRefresh}
               imageStyle={$emptyStateImage}

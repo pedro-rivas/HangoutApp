@@ -17,11 +17,9 @@ interface EmptyStateProps {
   headingStyle?: StyleProp<TextStyle>
   HeadingTextProps?: TextProps
   content?: TextProps["text"]
-  contentTx?: string
   contentStyle?: StyleProp<TextStyle>
   ContentTextProps?: TextProps
   button?: TextProps["text"]
-  buttonTx?: string
   buttonStyle?: ButtonProps["style"]
   buttonTextStyle?: ButtonProps["textStyle"]
   buttonOnPress?: ButtonProps["onPress"]
@@ -47,7 +45,6 @@ export function EmptyState(props: EmptyStateProps) {
 
   const {
     button = preset?.button,
-    buttonTx,
     buttonOnPress,
     content = preset?.content,
     heading = preset?.heading,
@@ -67,7 +64,7 @@ export function EmptyState(props: EmptyStateProps) {
   const isImagePresent = !!imageSource
   const isHeadingPresent = !!heading
   const isContentPresent = !!content
-  const isButtonPresent = !!(button || buttonTx)
+  const isButtonPresent = !!(button)
 
   const $containerStyles = [$containerStyleOverride]
   const $imageStyles = [
