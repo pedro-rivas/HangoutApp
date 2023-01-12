@@ -9,7 +9,7 @@
  * The app navigation resides in ./app/navigators, so head over there
  * if you're interested in adding screens and navigators.
  */
-import "./i18n"
+
 import "./utils/ignoreWarnings"
 import { useFonts } from "expo-font"
 import React from "react"
@@ -101,7 +101,6 @@ function App(props: AppProps) {
     config,
   }
 
-  // otherwise, we're ready to render the app
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <ErrorBoundary catchErrors={Config.catchErrors}>

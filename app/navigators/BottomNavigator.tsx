@@ -4,7 +4,7 @@ import React from "react"
 import { TextStyle, ViewStyle } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { Icon } from "../components"
-import { MessagesScreen, ExploreScreen, HomeScreen, ProfileScreen, WelcomeScreen } from "../screens"
+import { MessagesScreen, ExploreScreen, HomeScreen, ProfileScreen } from "../screens"
 import { colors, spacing, typography } from "../theme"
 import { AppStackParamList, AppStackScreenProps } from "./AppNavigator"
 
@@ -44,7 +44,7 @@ export function BottomNavigator() {
     >
       <Tab.Screen
         name="HomeView"
-        component={WelcomeScreen}
+        component={HomeScreen}
         options={{
           tabBarLabel: "Home",
           tabBarIcon: ({ focused }) => <Icon icon="home" color={focused && colors.tint} />,
