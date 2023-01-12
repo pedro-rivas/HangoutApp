@@ -34,7 +34,7 @@ const palette = {
   angry500: "#C03403",
 
   cornflower: "#151B25",
-  cornflowerDark: "#CDDFD6",
+  lightGreen: "#CDDFD6",
   navyBlue: "#034687",
   babyBlue: "#DBE8E1",
   red: "#E10032",
